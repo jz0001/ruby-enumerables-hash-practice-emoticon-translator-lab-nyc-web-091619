@@ -5,14 +5,11 @@ require "yaml"
 def load_library(path)
   emo = YAML.load_file(path)
   
-  emo2 = {
-    'get_meaning' => {},
-    'get_emoticon' => {}
-  }
+  emo2 = {'get_meaning' => {}, 'get_emoticon' => {}}
 
-  emo.each do |key,value|
-    emo2['get_emoticon'][value[0]] = emo[key][1]
-    emo2['get_meaning'][value[1]] = key
+  emo.each do |index,value|
+    emo2['get_emoticon'][value[0]] = emo[index][1]
+    emo2['get_meaning'][value[1]] = index
   end
 
   emo2
